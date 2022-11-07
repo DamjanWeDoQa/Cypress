@@ -46,5 +46,14 @@ describe ('Sign up', function () {
         signUp.signUpAlertShouldHaveText('Please fill out Username and Password.');
     });
 
+    it ('Should display an alert warning abut the user pre-existence if the user is duplicated', function(){
+        signUp.clickOnSignUp();
+        signUp.typeUser(credentials.existingUser);
+        signUp.typePassword(credentials.password);
+        signUp.clickOnSignUpButton();
+
+        signUp.signUpAlertShouldHaveText('This user already exist.');
+    });
+
    
 })
