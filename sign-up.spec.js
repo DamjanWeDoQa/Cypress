@@ -1,17 +1,16 @@
 import {basePage} from '../common/base.page.js';
 import { go } from '../common/base.page.js';
 import {signUp} from './sign-up.page.js';
+import {signUpEmailGenerator} from './sign-up.page.js';
 
 describe ('Sign up', function () {
     let credentials;
 
     before ('Go to the main page', function () {
-        // load credentials
         cy.fixture('credentials.json').then(function(cred){
             credentials = cred;
         }); 
         
-        // Access the site
         go.toHomePage();
         basePage.urlShouldContain('/demoblaze.com');
     });
@@ -19,7 +18,7 @@ describe ('Sign up', function () {
     beforeEach ('Reload page', function(){
         basePage.reload();
     });
-
+  
     it ('Should display modal after clicking on sign up', function(){
         signUp.clickOnSignUp();
         
@@ -55,5 +54,15 @@ describe ('Sign up', function () {
         signUp.signUpAlertShouldHaveText('This user already exist.');
     });
 
-   
+    it ('Should display a success alert if the user is new', function() {
+        
+        signUp.clickOnSignUp();
+        var mail = signUpEmailGenerator();
+        console.log(mail);
+        signUp.typeUser(mail);
+        signUp.typePassword(credentials.password);
+        signUp.clickOnSignUpButton();
+
+        signUp.signUpAlertShouldHaveText('Sign up successful.');
+    });   
 })
