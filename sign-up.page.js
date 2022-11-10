@@ -10,6 +10,16 @@ const signUpElements = {
     signUpButton: () => cy.findByRole('button', {  name: /sign up/i}),
 }
 
+  export function signUpEmailGenerator() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i < 10; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text + "@gmail.com";
+  }
+
 export const signUp = {
     clickOnSignUp () {
         signUpElements.signUpLink().click();
@@ -38,5 +48,7 @@ export const signUp = {
     signUpAlertShouldHaveText (text) {
         alert.textEqualsTo(text)
     },
+  
 
 }
+
