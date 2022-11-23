@@ -1,0 +1,25 @@
+{
+  "name": "damjanmarcikic",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypess:open": "cypress:open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DamjanWeDoQa/Cypress"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DamjanWeDoQa/Cypress"
+  },
+  "homepage": "https://github.com/DamjanWeDoQa/Cypress",
+  "devDependencies": {
+    "@testing-library/cypress": "^7.0.3",
+    "cypress": "^8.11.0"
+  }
+}
